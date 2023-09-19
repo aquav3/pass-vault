@@ -5,6 +5,11 @@ import (
 	"os"
 )
 
+type User struct {
+    username string;
+    password string;
+}
+
 func usage() {
     fmt.Println("./pass-vault [ARGS]")
     fmt.Println("ARGS: ")
@@ -25,6 +30,23 @@ func main() {
     fmt.Println("pass_vault")
     if len(os.Args) < 5 {
         usage()
+        os.Exit(1)
     }
+
+    action := os.Args[4] 
+
+    if action == "list" {
+        fmt.Println("well priting all the pass_vault")
+    }  
+    if action == "add" {
+        user := User {os.Args[6], os.Args[8]}
+        fmt.Println(user)    
+    }
+    if action == "remove" {
+        user_to_remove := User {"", os.Args[6]}
+        fmt.Println(user_to_remove)
+    }
+
+    
 
 }
